@@ -68,7 +68,7 @@ ICON FOR HOME (NASHVILLE)
 There should be a form for a user to add more restaurants with a <select> element for picking which city the new restaurant is in and all other required fields. When the user submits this form, the restaurant should appear on the page(unless the view is currently filtered to show a city where the newly restaurant is not in). All fields in the form should also be cleared so that the form is ready for the user to add the next restaurant.
 
 CREATE A FORM TO ALLOW USERS TO ENTER NEW RESTAURANT DATA
-USER'S NEW RESTAURANT DATA SHOULD POPULATE INTO THE JSON
+USER'S NEW RESTAURANT DATA SHOULD POPULATE INTO A UPDATED JS DATA STRUCTURE
 CLEAR ALL FIELDS AFTER USER ADDS NEW DATA - ENTER KEY AND EVENTLISTENER
 */
 
