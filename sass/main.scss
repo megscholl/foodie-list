@@ -4,15 +4,28 @@ $primary-heading: 'Elephant';
 
 // @font-face {
 //     font-family: 'Moving Skate';
-//     src: url(C:\Windows\Fonts\MovingSkate);
+//     src: url('C:\Windows\Fonts\MovingSkate.ttf')  format('truetype');
 //     font-weight: 800;
 //     font-style: normal;
 //     font-display: fallback;
 // }
 
+* {
+    margin: 0;
+    padding: 0;
+}
 
 body {
     text-align: center;
+}
+
+.border-container {
+    border: thin solid black;
+    min-width: 30%;
+    margin: 2em;
+    margin-right: 2em;
+    margin-left: 2em;
+    padding: 2em;
 }
 
 
