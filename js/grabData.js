@@ -1,12 +1,15 @@
 "use strict";
 
+
 let showRestaurantData = document.getElementById("restaurants");
-
 let showCityData = document.getElementById("cities");
+let restaurantName = [];
+let restaurants = [];
+let cities = [];
 
 
 
-function grabRestaurantData(rest) {
+function grabRestaurantData() {
     console.log("grabRestaurantData function is working");
     return new Promise((resolve, reject) => {
         let restaurantXHR = new XMLHttpRequest();
@@ -25,7 +28,7 @@ function grabRestaurantData(rest) {
 }
 grabRestaurantData();
 
-function grabCityData(city) {
+function grabCityData() {
     console.log("grabCityData function is working");
     return new Promise((resolve, reject) => {
         let cityXHR = new XMLHttpRequest();
@@ -45,4 +48,30 @@ function grabCityData(city) {
 grabCityData();
 
 
-module.exports = {grabRestaurantData, grabCityData};
+//
+//
+//
+
+function displayRestaurants() {
+    console.log("DISPLAY RESTAURANTS",  restaurantName);
+    for(var i = 0; i < grabRestaurantData.restaurants; i++){
+        console.log("LOOPING THROUGH RESTAURANT NAMES LIKE: ", displayRestaurants());
+    }
+}
+displayRestaurants();
+
+restaurants = 
+`
+<form>
+    <div class="selections">Select a Restaurant:
+        <select>
+            <option value="${restaurantName}">${restaurantName}</option> // grabRestaurantData will be replaced with the results from the loops through the Restaurant Data array
+
+        </select>
+    </div>
+</form>
+`;
+
+showRestaurantData.innerHTML = restaurants;
+
+module.exports = {grabRestaurantData, grabCityData, displayRestaurants};
