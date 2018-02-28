@@ -3,9 +3,8 @@
 
 let showRestaurantData = document.getElementById("restaurants");
 let showCityData = document.getElementById("cities");
-let restaurantName = [];
-let restaurants = [];
-let cities = [];
+let restaurantName = "";
+
 
 
 
@@ -52,26 +51,39 @@ grabCityData();
 //
 //
 
-function displayRestaurants() {
-    console.log("DISPLAY RESTAURANTS",  restaurantName);
-    for(var i = 0; i < grabRestaurantData.restaurants; i++){
-        console.log("LOOPING THROUGH RESTAURANT NAMES LIKE: ", displayRestaurants());
-    }
-}
-displayRestaurants();
+// function displayRestaurants() {
+//     console.log("DISPLAY RESTAURANTS",  restaurantName);
+//     for(var i = 0; i < grabRestaurantData.restaurants; i++){
+//         console.log("LOOPING THROUGH RESTAURANT NAMES LIKE: ", displayRestaurants());
+//     }
+// }
+// displayRestaurants();
 
-restaurants = 
-`
-<form>
-    <div class="selections">Select a Restaurant:
-        <select>
-            <option value="${restaurantName}">${restaurantName}</option> // grabRestaurantData will be replaced with the results from the loops through the Restaurant Data array
+// restaurants = 
+// `
+// <form>
+//     <div class="selections">Select a Restaurant:
+//         <select>
+//             <option value="${restaurantName}">${restaurantName}</option> // grabRestaurantData will be replaced with the results from the loops through the Restaurant Data array
 
-        </select>
-    </div>
-</form>
-`;
+//         </select>
+//     </div>
+// </form>
+// `;
 
-showRestaurantData.innerHTML = restaurants;
+// showRestaurantData.innerHTML = restaurants;
 
-module.exports = {grabRestaurantData, grabCityData, displayRestaurants};
+// cities = 
+// `
+// <form>
+//     <div class="selections">Select a City: 
+//         <select>
+//             <option value="${restaurantName}">${restaurantName}</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
+//         </select> 
+//     </div>
+// </form>
+// `;
+
+// showCityData.innerHTML = cities;
+
+module.exports = {grabRestaurantData, grabCityData};
