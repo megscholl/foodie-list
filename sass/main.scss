@@ -1,0 +1,28 @@
+$primary-text: Tahoma, Arial, sans-serif; 
+$primary-color: rgb(58, 179, 219);
+$primary-heading: 'Elephant';
+
+// @font-face {
+//     font-family: 'Moving Skate';
+//     src: url(C:\Windows\Fonts\MovingSkate);
+//     font-weight: 800;
+//     font-style: normal;
+//     font-display: fallback;
+// }
+
+
+body {
+    text-align: center;
+}
+
+
+h1 {
+    font-family: $primary-heading;
+    font-size: 60px;
+    letter-spacing: 8px;
+}
+
+.selections {
+    font-family: $primary-text;
+    color: $primary-color;
+}
