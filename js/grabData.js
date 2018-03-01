@@ -4,6 +4,10 @@
 let showRestaurantData = document.getElementById("restaurants");
 let showCityData = document.getElementById("cities");
 let restaurantName = "";
+var restaurantData;
+var cityData;
+var restaurantXHR;
+var cityXHR;
 
 
 
@@ -16,9 +20,10 @@ function grabRestaurantData() {
         // console.log("restaurantXHR: ", restaurantXHR);
         restaurantXHR.send();
         restaurantXHR.addEventListener('load', function() {
-            let restaurantData = JSON.parse(restaurantXHR.responseText);
-            console.log("restaurantData: ", restaurantData);
+            restaurantData = JSON.parse(restaurantXHR.responseText);
             resolve(restaurantData);
+            console.log("restaurant data: ",  restaurantData);
+            console.log("index one restaurant data: ", restaurantData.restaurants[0].restaurant);
         });
         restaurantXHR.addEventListener('error', function() {
             reject(console.log("error, please try again"));
@@ -26,6 +31,10 @@ function grabRestaurantData() {
     });
 }
 grabRestaurantData();
+console.log("restaurantXHR", restaurantXHR);
+console.log("drop down restaurant data: ");
+
+
 
 function grabCityData() {
     console.log("grabCityData function is working");
@@ -45,6 +54,8 @@ function grabCityData() {
     });
 }
 grabCityData();
+console.log("cityXHR: ", cityXHR);
+console.log("drop down city data: ",  cityData);
 
 
 //
@@ -86,4 +97,4 @@ grabCityData();
 
 // showCityData.innerHTML = cities;
 
-module.exports = {grabRestaurantData, grabCityData};
+module.exports = {grabRestaurantData, grabCityData, restaurantData};

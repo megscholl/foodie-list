@@ -14,7 +14,7 @@ let showCityData = document.getElementById("cities");
 let restaurants = "";
 let restaurantName = restaurants;
 let cities = "";
-let cityName = cities;
+let cityNames = cities;
 
 
 
@@ -42,7 +42,9 @@ cities =
 <form>
     <div class="selections">Select a City: 
         <select>
-            <option value="${cityName}">${cityName}</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
+            <option value="${cityNames
+        }">${cityNames
+        }</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
         </select> 
     </div>
 </form>
