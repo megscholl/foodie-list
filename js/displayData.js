@@ -39,7 +39,7 @@ function displayRestaurants() {
                             rating = restName[i].my_rating;
                             restaurantArray.push(restaurants);
                             restaurantList += `<ul class="list-group">`;
-                            restaurantList += `<li class="list-group-item" style="text-align:left;"><a href="#">${restaurants}</a> <br>${rating} </li>`;
+                            restaurantList += `<li class="list-group-item" style="text-align:left;"><a href="#">${restaurants}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${rating}</span></span> </li>`;
                             // restaurantList += `<p>Rating: ${restaurants[i].my_rating} </p>`;
                             restaurantList += `</ul>`;
 
