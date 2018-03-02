@@ -6,17 +6,23 @@
 let db = require('./grabData'); 
 
 // // // // // VARIABLES TO RENDER THE DOM  \\ \\ \\ \\ \\
-let showRestaurantData = document.getElementById("inner-container");
-let showCityData = document.getElementById("cities");
-let restaurants;
-// let restaurantName;
-let restaurantArray = [];
-let restaurantList;
-let restName;
-let restData;
-let rating;
-let cityArray = [];
-let cities;
+var showRestaurantData = document.getElementById("inner-container");
+var showCityData = document.getElementById("cities");
+var restaurants;
+let restaurantName;
+var restaurantArray = [];
+var restaurantList;
+var restName;
+var restData;
+var rating;
+var cityArray = [];
+var cities;
+var ratingArray = [];
+var myRating;
+var ratingList = "";
+var ratingNumber;
+var restaurantCall;
+var restaurantRating;
 // let rating;
 // let ratingArray = [];
 
@@ -27,26 +33,23 @@ function displayRestaurants() {
     db.grabRestaurantData().then(
 
             (resolve)=>{
-                let restaurant = resolve;
-                // console.log("resolve", resolve);
-                restData = Object.keys(resolve);
-                    // console.log("restData: ", restData);
-                    restData.forEach((location) => {
-                        restName = resolve[location];
-                        restaurantList = "";
-                        for(var i = 0; i < restName.length; i++) {
-                            restaurants = restName[i].restaurant;
-                            rating = restName[i].my_rating;
-                            restaurantArray.push(restaurants);
-                            restaurantList += `<ul class="list-group">`;
-                            restaurantList += `<li class="list-group-item" style="text-align:left;"><a href="#">${restaurants}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${rating}</span></span> </li>`;
-                            // restaurantList += `<p>Rating: ${restaurants[i].my_rating} </p>`;
-                            restaurantList += `</ul>`;
+                console.log(resolve);
+                let sortedRestaurants = resolve.restaurants.sort(function(a, b){
+                    return b.my_rating - a.my_rating;
+                });
 
-                            // console.log("restaurants - ", restaurants);
-                            }
-                            showRestaurantData.innerHTML = restaurantList;
-                        });
+                let restaurant = resolve;
+                    sortedRestaurants.forEach((restaurant) => {
+
+                        restaurantName = restaurant.restaurant;
+                        restaurantRating = restaurant.my_rating;
+
+                        ratingList += `<ul class="list-group">`;
+                        ratingList += `<li class="list-group-item" style="text-align:left; max-height: 850"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
+                        ratingList += `</ul>`;
+                            });
+
+                        showRestaurantData.innerHTML = ratingList;
         },(reject)=>{
             });
 }
@@ -86,19 +89,6 @@ function displayCities() {
 }
 
 displayCities();
-
-// let cityDropList = 
-// `
-// <form>
-//     <div class="selections">Select a City: 
-//         <select>
-//             <option value="${cities}">${cities}</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
-//         </select> 
-//     </div>
-// </form>
-// `;
-
-
 
 // let formInput = document.getElementById("user-input-form");
 
