@@ -65,7 +65,7 @@ function displayCities() {
                         for(var j = 0; j < cityName.length; j++) {
                             cities = cityName[j].city;
                             cityArray.push(cities);
-                            cityDropList = `<div class="selections">Check out these cities' best restaurants: <select><option value="${cities}">${cities}</option></select></div>`;
+                            cityDropList += `<option value="${cities}">${cities}</option>`;
                             console.log("city - ", cities);
                             if(cities[j] === "Nashville"){
                                 //HOME ICON DISPLAY
