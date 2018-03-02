@@ -56,22 +56,27 @@ function displayCities() {
     db.grabCityData().then(
             (resolve)=>{
                 let city = resolve;
-                // console.log("resolve", resolve);
+                
                 let cityData = Object.keys(resolve);
-                    // console.log("cityData: ", cityData);
+                    
                     cityData.forEach(function(location){
+
                         var cityName = resolve[location];
                         let cityDropList = "";
+
                         for(var j = 0; j < cityName.length; j++) {
+
                             cities = cityName[j].city;
                             cityArray.push(cities);
                             cityDropList += `<option value="${cities}">${cities}</option>`;
                             console.log("city - ", cities);
-                            if(cities[j] === "Nashville"){
-                                //HOME ICON DISPLAY
-                            }else{
-                                //NO ICON DISPLAY
-                            }
+
+                                if(cities[j] === "Nashville"){
+                                    console.log("NASHVILLE IS HOME");
+                                }else{
+                                    //NO ICON DISPLAY
+                                }
+
                         }
                         showCityData.innerHTML = cityDropList;
                     });
