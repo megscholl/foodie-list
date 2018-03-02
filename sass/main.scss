@@ -59,3 +59,14 @@ h1 {
 .rating-num {
     font-size: 9px;
 }
+
+#inner-container {
+    // position: fixed;
+    height: 70%;
+}
+
+body {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+}

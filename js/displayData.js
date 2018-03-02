@@ -1,35 +1,31 @@
 "use strict";
 // console.log("DISPLAY DATA JS IS DISPLAYING");
 
-// // // // // REQUIRES \\ \\ \\ \\ \\
-// let jsonData = require('./grabData'); 
+// // // // // REQUIRES \\ \\ \\ \\ \\ 
 let db = require('./grabData'); 
 
 // // // // // VARIABLES TO RENDER THE DOM  \\ \\ \\ \\ \\
 var showRestaurantData = document.getElementById("inner-container");
 var showCityData = document.getElementById("cities");
+var ratingData = document.getElementById("ratings");
+var list = document.getElementById("list-group");
 var restaurants;
+var restaurant;
 let restaurantName;
-var restaurantArray = [];
-var restaurantList;
-var restName;
-var restData;
-var rating;
 var cityArray = [];
 var cities;
-var ratingArray = [];
-var myRating;
 var ratingList = "";
-var ratingNumber;
-var restaurantCall;
 var restaurantRating;
-// let rating;
-// let ratingArray = [];
+var ratings;
+var ratingFromCity = "";
 
+
+
+var home = document.getElementById("home");
 
 
 function displayRestaurants() {
-    // console.log("DISPLAY RESTAURANTS HERE: ",  db.grabRestaurantData);
+    
     db.grabRestaurantData().then(
 
             (resolve)=>{
@@ -38,18 +34,26 @@ function displayRestaurants() {
                     return b.my_rating - a.my_rating;
                 });
 
-                let restaurant = resolve;
+                    restaurant = resolve;
                     sortedRestaurants.forEach((restaurant) => {
 
                         restaurantName = restaurant.restaurant;
                         restaurantRating = restaurant.my_rating;
 
-                        ratingList += `<ul class="list-group">`;
-                        ratingList += `<li class="list-group-item" style="text-align:left; max-height: 850"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
-                        ratingList += `</ul>`;
+                        console.log("rating, ", restaurantRating);
+
+                        // ratingList += ``;
+                        ratingList += `<li class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
+                        // ratingList += `</ul>`;
+
+                        ratingFromCity += `<option value="${restaurantRating}">${restaurantRating}</option>`;
+
+
+                        
                             });
 
                         showRestaurantData.innerHTML = ratingList;
+                        ratingData.innerHTML = ratingFromCity;
         },(reject)=>{
             });
 }
@@ -72,12 +76,14 @@ function displayCities() {
                             cities = cityName[j].city;
                             cityArray.push(cities);
                             cityDropList += `<option value="${cities}">${cities}</option>`;
-                            console.log("city - ", cities);
+                            // console.log("city - ", cities);
 
-                                if(cities[j] === "Nashville"){
+                                if(cities == "Nashville"){
                                     console.log("NASHVILLE IS HOME");
-                                }else{
+                                    home.innerHTML = home;
+                                }else if(cities != "Nashville"){
                                     //NO ICON DISPLAY
+                                    console.log("YOU'RE NOT HOME");
                                 }
 
                         }
