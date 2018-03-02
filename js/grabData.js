@@ -26,12 +26,12 @@ function grabRestaurantData() {
 grabRestaurantData();
 
 function grabCityData() {
-    console.log("grabCityData function is working");
+    // console.log("grabCityData function is working");
     return new Promise((resolve, reject) => {
         cityXHR = new XMLHttpRequest();
         cityXHR.addEventListener('load', function() {
             cityData = JSON.parse(this.responseText);
-            console.log("cityData: ", cityData);
+            // console.log("cityData: ", cityData);
             resolve(cityData);
         });
         cityXHR.addEventListener('error', function() {
@@ -41,20 +41,5 @@ function grabCityData() {
         cityXHR.send();
     });
 }
-// grabCityData();
 
-
-// cities = 
-// `
-// <form>
-//     <div class="selections">Select a City: 
-//         <select>
-//             <option value="${restaurantName}">${restaurantName}</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
-//         </select> 
-//     </div>
-// </form>
-// `;
-
-// showCityData.innerHTML = cities;
-
-module.exports = {grabRestaurantData, grabCityData, restaurantData};
+module.exports = {grabRestaurantData, grabCityData};
