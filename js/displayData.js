@@ -6,11 +6,15 @@
 let db = require('./grabData'); 
 
 // // // // // VARIABLES TO RENDER THE DOM  \\ \\ \\ \\ \\
-// let showRestaurantData = document.getElementById("inner-container");
-// let showCityData = document.getElementById("cities");
+let showRestaurantData = document.getElementById("inner-container");
+let showCityData = document.getElementById("cities");
 let restaurants;
 // let restaurantName;
 let restaurantArray = [];
+let restaurantList;
+let restName;
+let restData;
+let rating;
 let cityArray = [];
 let cities;
 // let rating;
@@ -25,21 +29,28 @@ function displayRestaurants() {
             (resolve)=>{
                 let restaurant = resolve;
                 // console.log("resolve", resolve);
-                let restData = Object.keys(resolve);
+                restData = Object.keys(resolve);
                     // console.log("restData: ", restData);
-                    restData.forEach(function(location){
-                        var restName = resolve[location];
+                    restData.forEach((location) => {
+                        restName = resolve[location];
+                        restaurantList = "";
                         for(var i = 0; i < restName.length; i++) {
                             restaurants = restName[i].restaurant;
+                            rating = restName[i].my_rating;
                             restaurantArray.push(restaurants);
-                            console.log("restaurants - ", restaurants);
+                            restaurantList += `<ul class="list-group">`;
+                            restaurantList += `<li class="list-group-item" style="text-align:left;"><a href="#">${restaurants}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${rating}</span></span> </li>`;
+                            // restaurantList += `<p>Rating: ${restaurants[i].my_rating} </p>`;
+                            restaurantList += `</ul>`;
+
+                            // console.log("restaurants - ", restaurants);
                             }
-                    });
-            },
-            (reject)=>{
-            }
-    );
+                            showRestaurantData.innerHTML = restaurantList;
+                        });
+        },(reject)=>{
+            });
 }
+
 
 function displayCities() {
     db.grabCityData().then(
@@ -50,31 +61,46 @@ function displayCities() {
                     // console.log("cityData: ", cityData);
                     cityData.forEach(function(location){
                         var cityName = resolve[location];
+                        let cityDropList = "";
                         for(var j = 0; j < cityName.length; j++) {
                             cities = cityName[j].city;
                             cityArray.push(cities);
+                            cityDropList = `<div class="selections">Check out these cities' best restaurants: <select><option value="${cities}">${cities}</option></select></div>`;
                             console.log("city - ", cities);
+                            if(cities[j] === "Nashville"){
+                                //HOME ICON DISPLAY
+                            }else{
+                                //NO ICON DISPLAY
+                            }
                         }
+                        showCityData.innerHTML = cityDropList;
                     });
-            },
-            (reject)=>{
+            },(reject)=>{
             }
     );
 }
 
 displayCities();
 
-// cities = 
+// let cityDropList = 
 // `
 // <form>
 //     <div class="selections">Select a City: 
 //         <select>
-//             <option value="${cityNames}">${cityNames}</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
+//             <option value="${cities}">${cities}</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
 //         </select> 
 //     </div>
 // </form>
 // `;
 
-// showCityData.innerHTML = cities;
+
+
+// let formInput = document.getElementById("user-input-form");
+
+// let form = `<div id="formData"><form><input id="user-rAdd" type="text" size="12" placeholder="What restaurant would you like to add to your library?"></form></div>`;
+
+// formInput.innerHTML = form;
+
+
 
 module.exports = {displayRestaurants, displayCities};

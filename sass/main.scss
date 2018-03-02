@@ -1,5 +1,5 @@
 $primary-text: Tahoma, Arial, sans-serif; 
-$primary-color: rgb(58, 179, 219);
+$primary-color: #ccc;
 $primary-heading: 'Elephant';
 
 // @font-face {
@@ -31,11 +31,31 @@ body {
 
 h1 {
     font-family: $primary-heading;
+    color: $primary-color;
     font-size: 60px;
     letter-spacing: 8px;
+    text-shadow: 3px 3px 3px rgb(106, 106, 109);
 }
 
 .selections {
     font-family: $primary-text;
     color: $primary-color;
+}
+
+.transparent {
+    max-height: 600px;
+    background-color: white;
+    opacity: .8;
+}
+
+.ratings {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-variant: small-caps;
+    color: rgb(70, 70, 70);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.rating-num {
+    font-size: 9px;
 }
