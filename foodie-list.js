@@ -1,13 +1,18 @@
 "use strict";
+
+
+
+
+
 /*
 Your job is to build a web page where a user can see all the restaurants they have been to and filter by city. They can also add additional restaurants.
 
 ** DONE ** SELECT DROP-DOWN TAGS
 DROP DOWN TAGES MUST POPULATE JSON ARRAY OBJECT KEYS
-USE JSON FILES
+USE JSON FILES **
 FILTER ABILITIES
-XMLHttpRequest() with PROMISES
-DIV'S TO BUILD REPRESENTATIONS OF DATA
+XMLHttpRequest() with PROMISES **
+DIV'S TO BUILD REPRESENTATIONS OF DATA **
 FORM TO ENTER NEW RESTAURANT INFO
 
 KEEP WEBSITE CLEAN & SIMPLE -- USE CARDS / GRID 
