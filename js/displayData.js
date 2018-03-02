@@ -65,11 +65,16 @@ function displayCities() {
                         for(var j = 0; j < cityName.length; j++) {
                             cities = cityName[j].city;
                             cityArray.push(cities);
-                            cityDropList += `<form> <div class="selections">Select a City for Best Restaurants: <select>`;
-                            cityDropList += `<option value="${cities}">${cities}</option>`;
-                            cityDropList += `</select></div></form>`;
+                            cityDropList = `<div class="selections">Check out these cities' best restaurants: <select><option value="${cities}">${cities}</option></select></div>`;
                             console.log("city - ", cities);
-                        }});
+                            if(cities[j] === "Nashville"){
+                                //HOME ICON DISPLAY
+                            }else{
+                                //NO ICON DISPLAY
+                            }
+                        }
+                        showCityData.innerHTML = cityDropList;
+                    });
             },(reject)=>{
             }
     );
@@ -77,18 +82,17 @@ function displayCities() {
 
 displayCities();
 
-let cityDropList = 
-`
-<form>
-    <div class="selections">Select a City: 
-        <select>
-            <option value="${cities}">${cities}</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
-        </select> 
-    </div>
-</form>
-`;
+// let cityDropList = 
+// `
+// <form>
+//     <div class="selections">Select a City: 
+//         <select>
+//             <option value="${cities}">${cities}</option> // grabRestaurantData will be replaced with the results from the loops through the City Data array
+//         </select> 
+//     </div>
+// </form>
+// `;
 
-showCityData.innerHTML = cityDropList;
 
 
 // let formInput = document.getElementById("user-input-form");
