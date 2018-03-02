@@ -1,28 +1,26 @@
 "use strict";
 
 
-let showRestaurantData = document.getElementById("restaurants");
-let showCityData = document.getElementById("cities");
 let restaurantName = "";
-
-
+let restaurantXHR,
+restaurantData;
+let cityXHR;
+let cityData;
 
 
 function grabRestaurantData() {
-    console.log("grabRestaurantData function is working");
     return new Promise((resolve, reject) => {
-        let restaurantXHR = new XMLHttpRequest();
-        restaurantXHR.open("GET", `../json/restaurants.json`);
-        // console.log("restaurantXHR: ", restaurantXHR);
-        restaurantXHR.send();
+        restaurantXHR = new XMLHttpRequest();
         restaurantXHR.addEventListener('load', function() {
-            let restaurantData = JSON.parse(restaurantXHR.responseText);
-            console.log("restaurantData: ", restaurantData);
+            restaurantData = JSON.parse(this.responseText); 
+            // console.log("restaurantData", restaurantData);
             resolve(restaurantData);
         });
         restaurantXHR.addEventListener('error', function() {
-            reject(console.log("error, please try again"));
-        }); 
+            reject();
+        });
+        restaurantXHR.open("GET", `../json/restaurants.json`);
+        restaurantXHR.send();
     });
 }
 grabRestaurantData();
@@ -30,48 +28,21 @@ grabRestaurantData();
 function grabCityData() {
     console.log("grabCityData function is working");
     return new Promise((resolve, reject) => {
-        let cityXHR = new XMLHttpRequest();
-        cityXHR.open("GET", `../json/cities.json`);
-        cityXHR.send();
-        // console.log("cityXHR: ", cityXHR);
+        cityXHR = new XMLHttpRequest();
         cityXHR.addEventListener('load', function() {
-            var cityData = JSON.parse(cityXHR.responseText);
+            cityData = JSON.parse(this.responseText);
             console.log("cityData: ", cityData);
             resolve(cityData);
         });
         cityXHR.addEventListener('error', function() {
             reject(console.log("error, please try again"));
         });
+        cityXHR.open("GET", `../json/cities.json`);
+        cityXHR.send();
     });
 }
-grabCityData();
+// grabCityData();
 
-
-//
-//
-//
-
-// function displayRestaurants() {
-//     console.log("DISPLAY RESTAURANTS",  restaurantName);
-//     for(var i = 0; i < grabRestaurantData.restaurants; i++){
-//         console.log("LOOPING THROUGH RESTAURANT NAMES LIKE: ", displayRestaurants());
-//     }
-// }
-// displayRestaurants();
-
-// restaurants = 
-// `
-// <form>
-//     <div class="selections">Select a Restaurant:
-//         <select>
-//             <option value="${restaurantName}">${restaurantName}</option> // grabRestaurantData will be replaced with the results from the loops through the Restaurant Data array
-
-//         </select>
-//     </div>
-// </form>
-// `;
-
-// showRestaurantData.innerHTML = restaurants;
 
 // cities = 
 // `
@@ -86,4 +57,4 @@ grabCityData();
 
 // showCityData.innerHTML = cities;
 
-module.exports = {grabRestaurantData, grabCityData};
+module.exports = {grabRestaurantData, grabCityData, restaurantData};
