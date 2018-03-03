@@ -71,7 +71,7 @@ function displayCities() {
 
                             cities = cityName[j].city;
                             cityArray.push(cities);
-                            cityDropList += `<br><option value="${cities}">${cities}</option>`;
+                            cityDropList += `<option value="${cities}">${cities}</option>`;
                             // console.log("city - ", cities);
 
                         }
