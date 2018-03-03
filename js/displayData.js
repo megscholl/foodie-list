@@ -37,6 +37,7 @@ function displayRestaurants() {
                     restaurant = resolve;
                     sortedRestaurants.forEach((restaurant) => {
 
+                        
                         restaurantName = restaurant.restaurant;
                         restaurantRating = restaurant.my_rating;
 
@@ -55,6 +56,7 @@ function displayRestaurants() {
 }
 
 
+
 function displayCities() {
     db.grabCityData().then(
             (resolve)=>{
@@ -71,7 +73,7 @@ function displayCities() {
 
                             cities = cityName[j].city;
                             cityArray.push(cities);
-                            cityDropList += `<br><option value="${cities}">${cities}</option>`;
+                            cityDropList += `<option value="${cities}">${cities}</option>`;
                             // console.log("city - ", cities);
 
                         }
