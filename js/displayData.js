@@ -48,12 +48,8 @@ function displayRestaurants() {
 
                         ratingFromCity += `<option value="${restaurantRating}">${restaurantRating}</option>`;
 
-
-                        
-                            });
-
-                        showRestaurantData.innerHTML = ratingList;
-                        ratingData.innerHTML = ratingFromCity;
+                    });
+            showRestaurantData.innerHTML = ratingList;
         },(reject)=>{
             });
 }
@@ -75,26 +71,25 @@ function displayCities() {
 
                             cities = cityName[j].city;
                             cityArray.push(cities);
-                            cityDropList += `<option value="${cities}">${cities}</option>`;
+                            cityDropList += `<br><option value="${cities}">${cities}</option>`;
                             // console.log("city - ", cities);
-
-                                if(cities == "Nashville"){
-                                    console.log("NASHVILLE IS HOME");
-                                    home.innerHTML = home;
-                                }else if(cities != "Nashville"){
-                                    //NO ICON DISPLAY
-                                    console.log("YOU'RE NOT HOME");
-                                }
 
                         }
                         showCityData.innerHTML = cityDropList;
                     });
             },(reject)=>{
-            }
-    );
+                });
 }
 
 displayCities();
+
+// let nashville = cities.onSelect("Nashville");
+
+// if(nashville == "Nashville"){
+//     console.log("NASHVILLE IS HOME");
+// }else{
+//     console.log("you're not home!");
+// }
 
 // let formInput = document.getElementById("user-input-form");
 
