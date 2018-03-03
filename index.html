@@ -15,19 +15,26 @@
         <option value="BrickTop's">BrickTop's</option>
     </select> 
 -->
-<div id="container" class="border-container" style="background-image: url(../images/london.jpg" width="100%" height="900">
+<div id="container background" class="border-container" style="background-image: url(../images/london.jpg)" width="100%" height="400">
 
-    <nav>
+    <nav class="navbar fixed-top justify-content-between">
        <h1>Foodie</h1>
-       <div class="selections">Choose a city: <select id="cities"></select><br>Choose a restaurant rating: <select id="ratings"></select></div>
-        <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" class="border-container transparent">
-            <div  id="inner-container"></div>
-        </div>
+       <div class="selections">Choose a city: <select id="cities"></select><br><button type="button" value="View All">View All</button></div>
     </nav>
-</div>
-<div id="user-input-form container" class="border-container">
 
-</div>
+    <div id="div-contain">
+        <div><br>
+            <div id="home"></div>
+            <div id="inner-container" class="transparent border-container pre-scrollable" height="calc(100vh-204px)">
+                <div><ul class="list-group"></ul>
+                </div>
+            </div>
+    </div>
+   
+        </div>
+<!-- <div id="user-input-form container" class="border-container">
+
+</div> -->
 
 
 

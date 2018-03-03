@@ -12,7 +12,8 @@ When the user first visits the page, all restaurants should be listed in order o
 
 Keep the design and layout simple. Use cards, grid, ect.
 
-There should be a <select> element on the page with the list of cities. When a user selects a city, the restaurants displayed should be filtered so that only the restaurants from the selected city are displayed. Make sure there is an option for All so that a user can go back to viewing all the restaurants.
+There should be a <select> element on the page with the list of cities. 
+When a user selects a city, the restaurants displayed should be filtered so that only the restaurants from the selected city are displayed. Make sure there is an option for All so that a user can go back to viewing all the restaurants.
 
 If the user selects Nashville, there should an icon or text that appears on the page that shows the user that this is their hometown.
 
