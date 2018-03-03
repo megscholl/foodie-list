@@ -18,6 +18,8 @@ var ratingList = "";
 var restaurantRating;
 var ratings;
 var ratingFromCity = "";
+var cityID;
+var ids;
 
 
 
@@ -28,28 +30,35 @@ function displayRestaurants() {
     
     db.grabRestaurantData().then(
 
-            (resolve)=>{
-                console.log(resolve);
-                let sortedRestaurants = resolve.restaurants.sort(function(a, b){
+            (cityJsonData)=>{
+                // console.log(cityJsonData);
+                let sortedRestaurants = cityJsonData.restaurants.sort(function(a, b){
                     return b.my_rating - a.my_rating;
                 });
+                    console.log("sorted restaurants: ", sortedRestaurants);
+                
+                        for(var m = 0; m < sortedRestaurants.length; m++){
+                            ids = sortedRestaurants[m].city_id;
+                            console.log("city id's: ", ids);
+                            // return ids;
+                        }
 
-                    restaurant = resolve;
+                    restaurant = cityJsonData;
+                    console.log(restaurant);
                     sortedRestaurants.forEach((restaurant) => {
 
                         
                         restaurantName = restaurant.restaurant;
                         restaurantRating = restaurant.my_rating;
 
-                        console.log("rating, ", restaurantRating);
+                        // console.log("rating, ", restaurantRating);
 
                         // ratingList += ``;
                         ratingList += `<li class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
                         // ratingList += `</ul>`;
 
-                        ratingFromCity += `<option value="${restaurantRating}">${restaurantRating}</option>`;
-
                     });
+
             showRestaurantData.innerHTML = ratingList;
         },(reject)=>{
             });
@@ -59,15 +68,19 @@ function displayRestaurants() {
 
 function displayCities() {
     db.grabCityData().then(
-            (resolve)=>{
-                let city = resolve;
+            (cityJsonData)=>{
                 
-                let cityData = Object.keys(resolve);
-                    
+                let city = cityJsonData;
+                    // console.log(city);
+                
+                let cityData = Object.keys(cityJsonData);
+                // console.log("city Data ", cityData);
+
                     cityData.forEach(function(location){
 
-                        var cityName = resolve[location];
+                        var cityName = cityJsonData[location];
                         let cityDropList = "";
+                        // let cityDropSelect = "";
 
                         for(var j = 0; j < cityName.length; j++) {
 
@@ -75,6 +88,9 @@ function displayCities() {
                             cityArray.push(cities);
                             cityDropList += `<option value="${cities}">${cities}</option>`;
                             // console.log("city - ", cities);
+
+                            cityID = cityName[j].city_id;
+                            console.log("cityID: ", cityID);
 
                         }
                         showCityData.innerHTML = cityDropList;
@@ -84,6 +100,7 @@ function displayCities() {
 }
 
 displayCities();
+// console.log("city id's: ", ids);
 
 // let nashville = cities.onSelect("Nashville");
 
