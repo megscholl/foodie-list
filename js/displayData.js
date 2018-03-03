@@ -37,13 +37,14 @@ function displayRestaurants() {
                     restaurant = resolve;
                     sortedRestaurants.forEach((restaurant) => {
 
+                        
                         restaurantName = restaurant.restaurant;
                         restaurantRating = restaurant.my_rating;
 
-                        // console.log("rating, ", restaurantRating);
+                        console.log("rating, ", restaurantRating);
 
                         // ratingList += ``;
-                        ratingList += `<li class="list-group-item" style="text-align:left"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
+                        ratingList += `<li class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
                         // ratingList += `</ul>`;
 
                         ratingFromCity += `<option value="${restaurantRating}">${restaurantRating}</option>`;
@@ -53,6 +54,7 @@ function displayRestaurants() {
         },(reject)=>{
             });
 }
+
 
 
 function displayCities() {
