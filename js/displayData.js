@@ -57,7 +57,6 @@ function displayRestaurants() {
                         ratingList += `<li class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
                         // ratingList += `</ul>`;
 
-
                     });
 
             showRestaurantData.innerHTML = ratingList;
