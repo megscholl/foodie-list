@@ -15,7 +15,7 @@ var restaurant;
 let restaurantName;
 var cityArray = [];
 var cities;
-var ratingList = "";
+var restaurantListDisplayed = "";
 var restaurantRating;
 var cityIdArray = [];
 var ids = [];
@@ -24,6 +24,8 @@ var restaurantIdArray = [];
 var cityDropList = [];
 var cityID = "";
 var cityNameArray = [];
+var sortedRestaurants = [];
+var restId = [];
 
 
 
@@ -36,7 +38,7 @@ function displayRestaurants() {
 
             (cityJsonData)=>{
                 // console.log(cityJsonData);
-                let sortedRestaurants = cityJsonData.restaurants.sort(function(a, b){
+                 sortedRestaurants = cityJsonData.restaurants.sort(function(a, b){
                     return b.my_rating - a.my_rating;
                 });
                     // console.log("sorted restaurants: ", sortedRestaurants);
@@ -55,18 +57,20 @@ function displayRestaurants() {
                         restaurantName = restaurant.restaurant;
                         restaurantRating = restaurant.my_rating;
 
+
                         // console.log("rating, ", restaurantRating);
 
-                        // ratingList += ``;
-                        ratingList += `<li id="${ids}" class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
-                        // ratingList += `</ul>`;
+                        // restaurantListDisplayed += ``;
+                        restaurantListDisplayed += `<li id="${ids}" class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
+                        // restaurantListDisplayed += `</ul>`;
 
                     });
 
-            showRestaurantData.innerHTML = ratingList;
+            showRestaurantData.innerHTML = restaurantListDisplayed;
         },(reject)=>{
             });
 }
+
 
 
 // ******FUNCTION TO DISPLAY CITIES IN <SELECT> MENU ******
@@ -81,15 +85,15 @@ function displayCities() {
 
                 //DECLARING VARIABLES FOR JSON DATA AND SETTING THE INFO INTO A STRING
                         var cityName = cityJsonData[location];
-                        console.log("cityName", cityName);
-                        console.log("nashville cityName id", cityName[6].id, cityName[6].city);
+                        // console.log("cityName", cityName);
+                        // console.log("nashville cityName id", cityName[6].id, cityName[6].city);
                         let cityDropList = "";
                         // let cityDropSelect = "";
 
 
                 // LOOPING THROUGH THE CITY JSON
                         for(var j = 0; j < cityName.length; j++) {
-                                console.log("city id inside the loop: ", cityName[j].id);
+                                // console.log("city id inside the loop: ", cityName[j].id);
 
                 //GRABBING THE CITY NAME AND ID FROM CITIES.JSON
                             cities = cityName[j].city;
@@ -100,9 +104,8 @@ function displayCities() {
                 // CREATING HTML <OPTION> TO POPULATE CITY NAMES IN A DROP DOWN MENU
                             cityDropList += `<option value="${cityID}">${cities}</option>`;
                         }
-                        console.log("cityID: ", cityID);
-                        console.log("cityNames: ", cityIdArray);
-                        console.log("purpose: ", cities);
+                        // console.log("cityID: ", cityID);
+                        // console.log("cityNames: ", cityIdArray);
                         
                         // console.log("cityIdArray: ", cityIdArray[6]);
                 // POPULATING THE SELECT OPTION TAGS ON THE HTML
@@ -115,6 +118,7 @@ function displayCities() {
                 });
 }
 
+// ****** FUNCTION TO SELECT NASHVILLE AS HOME AND MATCH CITY ID'S WITH RESTAURANT CITY_ID'S TO DISPLAY ONLY RESTAURANTS IN SELECTED CITY ******
 var cityName = [];
 let selectCity = document.getElementById("cities");
 selectCity.addEventListener("change", (select) => {
@@ -127,14 +131,30 @@ selectCity.addEventListener("change", (select) => {
     // console.log("city selected: ", cityID);
     
             if(select.target.value == 7){
-                console.log("nashville selected");
+                // console.log("nashville selected");
                 homeSelected = `<span class="home">You're home!</span>`;
                 home.innerHTML = homeSelected;
             }else {
-                console.log("you fucked up");
+                // console.log("you fucked up");
                 homeSelected = `<span class="home"></span>`;
                 home.innerHTML = homeSelected;
             }
+
+            console.log("ids in array: ", sortedRestaurants);
+            for(let r = 0; r < sortedRestaurants.length; r++){
+                console.log("r: ", r);
+                if(select.target.value == sortedRestaurants[r].city_id){
+                    // console.log("you've selected the city!");
+                    console.log("restaurant selected", sortedRestaurants[r].restaurant);
+
+                }else{
+                    // console.log("your city selection isn't right");
+                }
+            }
+
+
+            // console.log("restaurant 1", sortedRestaurants);
+            // if(select.target.value == )
 });
 
 // console.log(cityIdArray);
@@ -143,7 +163,6 @@ selectCity.addEventListener("change", (select) => {
 // console.log("cityID: ", cityIdArray);
 // console.log("city id's: ", restaurantIdArray);
 
-// ****** FUNCTION TO MATCH CITY ID'S WITH RESTAURANT CITY_ID'S TO DISPLAY ONLY RESTAURANTS IN SELECTED CITY ******
 
 
 
