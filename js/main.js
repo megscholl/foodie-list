@@ -9,4 +9,19 @@ let formData = require('./form');
 let filter = require('./filterBy');
 
 showAllData.displayRestaurants();
+showAllData.displayCities();
 // showAllData.grabCityData();
+
+
+// var nameContent;
+
+// function first(){
+//     nameContent="hey";
+//     console.log("nameContent", nameContent);
+// }
+
+// function second() {
+//     first();
+//     console.log("hey here", nameContent);
+// }
+// second();

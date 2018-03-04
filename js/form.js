@@ -1,7 +1,8 @@
 "use strict";
 
-console.log("FORM DATA IN THE HOUSE");
+// console.log("FORM DATA IN THE HOUSE");
 
+// var inputFields = document.getElementById("form-input");
 
 
 //   function restaurantForm(restaurant, restaurantId) {
@@ -14,6 +15,7 @@ console.log("FORM DATA IN THE HOUSE");
 //         btnText: restaurant ? "save changes" : "save restaurant",
 //         btnId: restaurant ? "save_edit_btn" : "save_new_btn"
 //       },
+      
 //       form =
 //         `<h3>${restaurantItem.formTitle}</h3>
 //         <input type="text" id="form--name" placeholder="Restaurant" value="${restaurantItem.name}"></input>
@@ -22,6 +24,7 @@ console.log("FORM DATA IN THE HOUSE");
 //         <button id="${restaurantId}" class=${restaurantItem.btnId}>${restaurantItem.btnText}</button>`;
 //       resolve(form);
 //     });
+//     inputFields.innerHTML = form;
 //   }
 
 

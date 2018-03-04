@@ -23,7 +23,7 @@ function grabRestaurantData() {
         restaurantXHR.send();
     });
 }
-grabRestaurantData();
+// grabRestaurantData();
 
 function grabCityData() {
     // console.log("grabCityData function is working");
