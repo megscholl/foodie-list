@@ -17,12 +17,12 @@ var cityArray = [];
 var cities;
 var ratingList = "";
 var restaurantRating;
-var cityID;
 var cityIdArray = [];
 var ids = [];
 var sortByCity = [];
 var restaurantIdArray = [];
 var cityDropList = [];
+var cityID = "";
 
 
 
@@ -94,30 +94,16 @@ function displayCities() {
                             cityIdArray.push(cityID);
                             cityArray.push(cities);
 
-
                 // CREATING HTML <OPTION> TO POPULATE CITY NAMES IN A DROP DOWN MENU
                             cityDropList += `<option id="${cityID}" value="${cities}">${cities}</option>`;
                         }
 
-                        let selectCity = document.getElementById("cities");
-                        selectCity.addEventListener("change", (selected) => {
-                            console.log("selection has been made!");
-
-                            let homeSelected = "";
-                            
-                        if(cityID.selected === 7){
-                            console.log("nashville selected");
-                            homeSelected = `You're home!`;
-                            home.innerHTML = homeSelected;
-                        }else{
-                            console.log("you're not home");
-                        }
-
-                        });
-
+                        console.log("cityNames: ", cityIdArray);
+                        
+                        // console.log("cityIdArray: ", cityIdArray[6]);
                 // POPULATING THE SELECT OPTION TAGS ON THE HTML
                         showCityData.innerHTML = cityDropList;
-                        console.log("cityDropList", cityDropList);
+                        // console.log("cityDropList", cityDropList);
 
                         
                     });
@@ -125,9 +111,32 @@ function displayCities() {
                 });
 }
 
-console.log("city - ", cityArray, cityIdArray);
-console.log("cityID: ", cityIdArray);
-console.log("city id's: ", restaurantIdArray);
+var cityName = [];
+let selectCity = document.getElementById("cities");
+selectCity.addEventListener("change", (select) => {
+    console.log("selection has been made!");
+
+    let homeSelected = "";
+    // console.log("cityIdArray: ", cityIdArray);
+    // console.log("nashville, ",  cityIdArray[6]);
+
+    console.log("city selected: ", cityID);
+    
+if(cityIdArray[6].selected == 6){
+    console.log("nashville selected");
+    homeSelected = `You're home!`;
+    home.innerHTML = homeSelected;
+}else{
+    console.log("you're not home");
+}
+
+});
+
+// console.log(cityIdArray);
+
+// console.log("city - ", cityArray, cityIdArray);
+// console.log("cityID: ", cityIdArray);
+// console.log("city id's: ", restaurantIdArray);
 
 // ****** FUNCTION TO MATCH CITY ID'S WITH RESTAURANT CITY_ID'S TO DISPLAY ONLY RESTAURANTS IN SELECTED CITY ******
 
