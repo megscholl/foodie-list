@@ -12,10 +12,11 @@ var list = document.getElementById("list-group");
 var home = document.getElementById("home");
 var restaurants;
 var restaurant;
-let restaurantName;
+let restaurantName = {};
 var cityArray = [];
 var cities;
 var restaurantListDisplayed = "";
+var showSelectedCityRestaurants = "";
 var restaurantRating;
 var cityIdArray = [];
 var ids = [];
@@ -122,7 +123,7 @@ function displayCities() {
 var cityName = [];
 let selectCity = document.getElementById("cities");
 selectCity.addEventListener("change", (select) => {
-    console.log("selection has been made!", select.target.value);
+    // console.log("selection has been made!", select.target.value);
 
     let homeSelected = "";
     // console.log("cityIdArray: ", cityIdArray);
@@ -140,19 +141,22 @@ selectCity.addEventListener("change", (select) => {
                 home.innerHTML = homeSelected;
             }
 
-            console.log("ids in array: ", sortedRestaurants);
+            // console.log("ids in array: ", sortedRestaurants);
             for(let r = 0; r < sortedRestaurants.length; r++){
-                console.log("r: ", r);
+                // console.log("r: ", r);
                 if(select.target.value == sortedRestaurants[r].city_id){
                     // console.log("you've selected the city!");
-                    console.log("restaurant selected", sortedRestaurants[r].restaurant);
+                    var sortSelectedCity = sortedRestaurants[r].restaurant;
+                    console.log("restaurant selected", sortSelectedCity);
+
+                    showSelectedCityRestaurants += `<li value="${ids}" class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
 
                 }else{
                     // console.log("your city selection isn't right");
                 }
             }
 
-
+                showRestaurantData.innerHTML = showSelectedCityRestaurants;
             // console.log("restaurant 1", sortedRestaurants);
             // if(select.target.value == )
 });
