@@ -89,7 +89,7 @@ function displayCities() {
 
                 // LOOPING THROUGH THE CITY JSON
                         for(var j = 0; j < cityName.length; j++) {
-
+                                console.log("city id inside the loop: ", cityName[j].id);
 
                 //GRABBING THE CITY NAME AND ID FROM CITIES.JSON
                             cities = cityName[j].city;
@@ -98,7 +98,7 @@ function displayCities() {
                             cityArray.push(cities);
 
                 // CREATING HTML <OPTION> TO POPULATE CITY NAMES IN A DROP DOWN MENU
-                            cityDropList += `<option id="${cityID}" value="${cities}">${cities}</option>`;
+                            cityDropList += `<option value="${cityID}">${cities}</option>`;
                         }
                         console.log("cityID: ", cityID);
                         console.log("cityNames: ", cityIdArray);
@@ -118,15 +118,15 @@ function displayCities() {
 var cityName = [];
 let selectCity = document.getElementById("cities");
 selectCity.addEventListener("change", (select) => {
-    console.log("selection has been made!");
+    console.log("selection has been made!", select.target.value);
 
     let homeSelected = "";
     // console.log("cityIdArray: ", cityIdArray);
     // console.log("nashville, ",  cityIdArray[6]);
 
-    console.log("city selected: ", cityID);
+    // console.log("city selected: ", cityID);
     
-if(cityIdArray.id.selected == 6){
+if(select.target.value == 7){
     console.log("nashville selected");
     homeSelected = `You're home!`;
     home.innerHTML = homeSelected;
