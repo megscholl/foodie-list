@@ -9,6 +9,7 @@ var showRestaurantData = document.getElementById("inner-container");
 var showCityData = document.getElementById("cities");
 var ratingData = document.getElementById("ratings");
 var list = document.getElementById("list-group");
+var home = document.getElementById("home");
 var restaurants;
 var restaurant;
 let restaurantName;
@@ -27,7 +28,7 @@ var sortByCity = "";
 
 var home = document.getElementById("home");
 
-
+// ****** FUNCTION TO DISPLAY RESTAURANTS AND RATINGS IN LIST ******
 function displayRestaurants() {
     
     db.grabRestaurantData().then(
@@ -67,7 +68,7 @@ function displayRestaurants() {
 }
 
 
-
+// ******FUNCTION TO DISPLAY CITIES IN <SELECT> MENU ******
 function displayCities() {
     db.grabCityData().then(
             (cityJsonData)=>{
@@ -104,16 +105,33 @@ function displayCities() {
                 // POPULATING THE SELECT OPTION TAGS ON THE HTML
                         showCityData.innerHTML = cityDropList;
 
-                    //     if(cityID == cityName.target.getElementById("home")){
-                    //         sortByCity = `You're home!`;
-                    //     }else{ console.log("user is not home");
-                    //   }
+                        
                     });
             },(reject)=>{
                 });
 }
 
 
+// ****** FUNCTION TO MATCH CITY ID'S WITH RESTAURANT CITY_ID'S TO DISPLAY ONLY RESTAURANTS IN SELECTED CITY ******
+function cityOption(){
+//     displayCities().then()
+//     let optionTag = document.getElementsByTagName("option");
+
+//     //IF CITY SELECTED MATCHES A CITY ID, DISPLAY RESTAURANTS ONLY IN THAT CITY
+//     if(cityID == [j]){
+//         console.log("IF STATEMENT FOR CITYID IS WORKING");
+//     }else {
+//         console.log('error');
+//     };
+
+//     //IF NASHVILLE IS SELECTED AS CITY, DISPLAY 'HOME CITY' ABOVE LIST
+//     if(cityID === 7){
+//         console.log("YOU'RE HOME");
+//         home = `You're home!`;
+//     }else{
+//         console.log("YOU'RE NOT HOME");
+//     }
+}
 
 
 
