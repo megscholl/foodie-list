@@ -17,12 +17,12 @@ var cityArray = [];
 var cities;
 var ratingList = "";
 var restaurantRating;
-var ratings;
-var ratingFromCity = "";
 var cityID;
 var cityIdArray = [];
-var ids;
-var sortByCity = "";
+var ids = [];
+var sortByCity = [];
+var restaurantIdArray = [];
+var cityDropList = [];
 
 
 
@@ -38,11 +38,11 @@ function displayRestaurants() {
                 let sortedRestaurants = cityJsonData.restaurants.sort(function(a, b){
                     return b.my_rating - a.my_rating;
                 });
-                    console.log("sorted restaurants: ", sortedRestaurants);
-                
+                    // console.log("sorted restaurants: ", sortedRestaurants);
+                        ids = "";
                         for(var m = 0; m < sortedRestaurants.length; m++){
                             ids = sortedRestaurants[m].city_id;
-                            // console.log("city id's: ", ids);
+                            restaurantIdArray.push(ids);
                             // return ids;
                         }
 
@@ -57,7 +57,7 @@ function displayRestaurants() {
                         // console.log("rating, ", restaurantRating);
 
                         // ratingList += ``;
-                        ratingList += `<li class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
+                        ratingList += `<li id="${ids}" class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
                         // ratingList += `</ul>`;
 
                     });
@@ -96,14 +96,28 @@ function displayCities() {
 
 
                 // CREATING HTML <OPTION> TO POPULATE CITY NAMES IN A DROP DOWN MENU
-                            cityDropList += `<option value="${cities}">${cities}</option>`;
-                            console.log("city - ", cities);
-                            console.log("cityID: ", cityID);
-
+                            cityDropList += `<option id="${cityID}" value="${cities}">${cities}</option>`;
                         }
+
+                        let selectCity = document.getElementById("cities");
+                        selectCity.addEventListener("change", (selected) => {
+                            console.log("selection has been made!");
+
+                            let homeSelected = "";
+                            
+                        if(cityID.selected === 7){
+                            console.log("nashville selected");
+                            homeSelected = `You're home!`;
+                            home.innerHTML = homeSelected;
+                        }else{
+                            console.log("you're not home");
+                        }
+
+                        });
 
                 // POPULATING THE SELECT OPTION TAGS ON THE HTML
                         showCityData.innerHTML = cityDropList;
+                        console.log("cityDropList", cityDropList);
 
                         
                     });
@@ -111,39 +125,19 @@ function displayCities() {
                 });
 }
 
+console.log("city - ", cityArray, cityIdArray);
+console.log("cityID: ", cityIdArray);
+console.log("city id's: ", restaurantIdArray);
 
 // ****** FUNCTION TO MATCH CITY ID'S WITH RESTAURANT CITY_ID'S TO DISPLAY ONLY RESTAURANTS IN SELECTED CITY ******
-function cityOption(){
-//     displayCities().then()
-//     let optionTag = document.getElementsByTagName("option");
 
-//     //IF CITY SELECTED MATCHES A CITY ID, DISPLAY RESTAURANTS ONLY IN THAT CITY
-//     if(cityID == [j]){
-//         console.log("IF STATEMENT FOR CITYID IS WORKING");
-//     }else {
-//         console.log('error');
-//     };
 
-//     //IF NASHVILLE IS SELECTED AS CITY, DISPLAY 'HOME CITY' ABOVE LIST
-//     if(cityID === 7){
-//         console.log("YOU'RE HOME");
-//         home = `You're home!`;
-//     }else{
-//         console.log("YOU'RE NOT HOME");
-//     }
+
+function selectNashville() {
+    console.log("select nashville as home function is working");
+   
 }
 
-
-
-// console.log("city id's: ", ids);
-
-// let nashville = cities.onSelect("Nashville");
-
-// if(nashville == "Nashville"){
-//     console.log("NASHVILLE IS HOME");
-// }else{
-//     console.log("you're not home!");
-// }
 
 // let formInput = document.getElementById("user-input-form");
 
