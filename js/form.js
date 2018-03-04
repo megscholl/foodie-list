@@ -3,10 +3,10 @@
 // console.log("FORM DATA IN THE HOUSE");
 
 // var inputFields = document.getElementById("form-input");
+// var form = "";
 
 
 //   function restaurantForm(restaurant, restaurantId) {
-//     return new Promise(function (resolve, reject) {
 //       let restaurantItem = {
 //         Restaurant: restaurant ? restaurant.name : "",
 //         City: restaurant ? restaurant.city : "",
@@ -22,10 +22,10 @@
 //         <input type="text" id="form--artist" placeholder="City" value="${restaurantItem.city}"></input>
 //         <input type="text" id="form--album" placeholder="Your Rating" value="${restaurantItem.rating}"></input>
 //         <button id="${restaurantId}" class=${restaurantItem.btnId}>${restaurantItem.btnText}</button>`;
-//       resolve(form);
-//     });
+
+//     }
 //     inputFields.innerHTML = form;
-//   }
+  
 
 
 //   module.export = {restaurantForm};

@@ -14,9 +14,11 @@ Your job is to build a a web page where a user can see all the restaurants they 
 
 ***********There should be a <select> element on the page with the list of cities. 
 
-When a user selects a city, the restaurants displayed should be filtered so that only the restaurants from the selected city are displayed. Make sure there is an option for All so that a user can go back to viewing all the restaurants.
+***********When a user selects a city, the restaurants displayed should be filtered so that only the restaurants from the selected city are displayed. 
 
-If the user selects Nashville, there should an icon or text that appears on the page that shows the user that this is their hometown.
+Make sure there is an option for All so that a user can go back to viewing all the restaurants.
+
+***********If the user selects Nashville, there should an icon or text that appears on the page that shows the user that this is their hometown.
 
 There should be a form for a user to add more restaurants with a <select> element for picking which city the new restaurant is in and all other required fields. When the user submits this form, the restaurant should appear on the page(unless the view is currently filtered to show a city where the newly restaurant is not in). All fields in the form should also be cleared so that the form is ready for the user to add the next restaurant.
 
