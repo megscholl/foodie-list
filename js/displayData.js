@@ -23,6 +23,7 @@ var sortByCity = [];
 var restaurantIdArray = [];
 var cityDropList = [];
 var cityID = "";
+var cityNameArray = [];
 
 
 
@@ -80,6 +81,8 @@ function displayCities() {
 
                 //DECLARING VARIABLES FOR JSON DATA AND SETTING THE INFO INTO A STRING
                         var cityName = cityJsonData[location];
+                        console.log("cityName", cityName);
+                        console.log("nashville cityName id", cityName[6].id, cityName[6].city);
                         let cityDropList = "";
                         // let cityDropSelect = "";
 
@@ -97,8 +100,9 @@ function displayCities() {
                 // CREATING HTML <OPTION> TO POPULATE CITY NAMES IN A DROP DOWN MENU
                             cityDropList += `<option id="${cityID}" value="${cities}">${cities}</option>`;
                         }
-
+                        console.log("cityID: ", cityID);
                         console.log("cityNames: ", cityIdArray);
+                        console.log("purpose: ", cities);
                         
                         // console.log("cityIdArray: ", cityIdArray[6]);
                 // POPULATING THE SELECT OPTION TAGS ON THE HTML
@@ -122,7 +126,7 @@ selectCity.addEventListener("change", (select) => {
 
     console.log("city selected: ", cityID);
     
-if(cityIdArray[6].selected == 6){
+if(cityIdArray.id.selected == 6){
     console.log("nashville selected");
     homeSelected = `You're home!`;
     home.innerHTML = homeSelected;
