@@ -19,7 +19,9 @@ var restaurantRating;
 var ratings;
 var ratingFromCity = "";
 var cityID;
+var cityIdArray = [];
 var ids;
+var sortByCity = "";
 
 
 
@@ -39,12 +41,12 @@ function displayRestaurants() {
                 
                         for(var m = 0; m < sortedRestaurants.length; m++){
                             ids = sortedRestaurants[m].city_id;
-                            console.log("city id's: ", ids);
+                            // console.log("city id's: ", ids);
                             // return ids;
                         }
 
                     restaurant = cityJsonData;
-                    console.log(restaurant);
+                    // console.log(restaurant);
                     sortedRestaurants.forEach((restaurant) => {
 
                         
@@ -70,36 +72,51 @@ function displayCities() {
     db.grabCityData().then(
             (cityJsonData)=>{
                 
-                let city = cityJsonData;
-                    // console.log(city);
-                
                 let cityData = Object.keys(cityJsonData);
                 // console.log("city Data ", cityData);
 
                     cityData.forEach(function(location){
 
+                //DECLARING VARIABLES FOR JSON DATA AND SETTING THE INFO INTO A STRING
                         var cityName = cityJsonData[location];
                         let cityDropList = "";
                         // let cityDropSelect = "";
 
+
+                // LOOPING THROUGH THE CITY JSON
                         for(var j = 0; j < cityName.length; j++) {
 
-                            cities = cityName[j].city;
-                            cityArray.push(cities);
-                            cityDropList += `<option value="${cities}">${cities}</option>`;
-                            // console.log("city - ", cities);
 
-                            cityID = cityName[j].city_id;
+                //GRABBING THE CITY NAME AND ID FROM CITIES.JSON
+                            cities = cityName[j].city;
+                            cityID = cityName[j].id;
+                            cityIdArray.push(cityID);
+                            cityArray.push(cities);
+
+
+                // CREATING HTML <OPTION> TO POPULATE CITY NAMES IN A DROP DOWN MENU
+                            cityDropList += `<option value="${cities}">${cities}</option>`;
+                            console.log("city - ", cities);
                             console.log("cityID: ", cityID);
 
                         }
+
+                // POPULATING THE SELECT OPTION TAGS ON THE HTML
                         showCityData.innerHTML = cityDropList;
+
+                    //     if(cityID == cityName.target.getElementById("home")){
+                    //         sortByCity = `You're home!`;
+                    //     }else{ console.log("user is not home");
+                    //   }
                     });
             },(reject)=>{
                 });
 }
 
-displayCities();
+
+
+
+
 // console.log("city id's: ", ids);
 
 // let nashville = cities.onSelect("Nashville");
