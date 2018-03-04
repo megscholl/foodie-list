@@ -140,19 +140,23 @@ selectCity.addEventListener("change", (select) => {
                 homeSelected = `<span class="home"></span>`;
                 home.innerHTML = homeSelected;
             }
-
+            var sortSelectedCity = "";
+            var sortSelectedRating = "";
+            showSelectedCityRestaurants = [];
             // console.log("ids in array: ", sortedRestaurants);
             for(let r = 0; r < sortedRestaurants.length; r++){
                 // console.log("r: ", r);
                 if(select.target.value == sortedRestaurants[r].city_id){
                     // console.log("you've selected the city!");
-                    var sortSelectedCity = sortedRestaurants[r].restaurant;
+                    sortSelectedCity = sortedRestaurants[r].restaurant;
+                    sortSelectedRating = sortedRestaurants[r].my_rating;
                     console.log("restaurant selected", sortSelectedCity);
 
-                    showSelectedCityRestaurants += `<li value="${ids}" class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${restaurantName}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${restaurantRating}</span></span> </li>`;
+                    showSelectedCityRestaurants += `<li value="${ids}" class="list-group-item" style="text-align:left; max-height: 60%;"><a href="#">${sortSelectedCity}</a> &nbsp;&nbsp;&nbsp; <span class="ratings">rating: <span class="rating-num">${sortSelectedRating}</span></span> </li>`;
 
                 }else{
                     // console.log("your city selection isn't right");
+                    
                 }
             }
 
