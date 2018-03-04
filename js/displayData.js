@@ -126,14 +126,15 @@ selectCity.addEventListener("change", (select) => {
 
     // console.log("city selected: ", cityID);
     
-if(select.target.value == 7){
-    console.log("nashville selected");
-    homeSelected = `You're home!`;
-    home.innerHTML = homeSelected;
-}else{
-    console.log("you're not home");
-}
-
+            if(select.target.value == 7){
+                console.log("nashville selected");
+                homeSelected = `<span class="home">You're home!</span>`;
+                home.innerHTML = homeSelected;
+            }else {
+                console.log("you fucked up");
+                homeSelected = `<span class="home"></span>`;
+                home.innerHTML = homeSelected;
+            }
 });
 
 // console.log(cityIdArray);
