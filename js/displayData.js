@@ -66,9 +66,6 @@ function displayRestaurants() {
             });
 }
 
-//**********************VIEW ALL BUTTON
-// var viewAll = document.getElementById("view-all-btn");
-// viewAll.addEventListener("click", displayRestaurants());
 
 
 // ******FUNCTION TO DISPLAY CITIES IN <SELECT> MENU ******
@@ -162,6 +159,19 @@ selectCity.addEventListener("change", (select) => {
 // inputFields.innerHTML = formInputFields;
 
 
+//**********************VIEW ALL BUTTON
+var viewAll = document.getElementById("viewall-btn");
+viewAll.addEventListener("click", (displayAll) => {
+    // console.log("view all button is working");
 
+    if(displayAll.target.value === "ViewAll") {
+        console.log("view all button was clicked");
+
+        showRestaurantData.innerHTML = restaurantListDisplayed;
+
+    }else{
+        console.log("view all button is not working");
+    }
+});
 
 module.exports = {displayRestaurants, displayCities};
